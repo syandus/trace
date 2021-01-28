@@ -110,15 +110,6 @@ class CallSiteCopy {
     return this._evalOrigin;
   }
 
-  toString() {
-    let prefix = "";
-    if (this._isConstructor) {
-      prefix = "new ";
-    } else if (this._isAsync) {
-      prefix = "async ";
-    }
-    return prefix + this._functionName + " (" + this._fileName + ":" + this._lineNumber + ":" + this._columnNumber + ")";
-  }
   // copied from https://github.com/evanw/node-source-map-support/blob/d0587453869fa19f35671f32f4e27514123877a7/source-map-support.js#L272
   toString() {
     var fileName;
@@ -185,6 +176,9 @@ class CallSiteCopy {
       line += " (" + fileLocation + ")";
     }
     return line;
+  }
+  inspect() {
+    return this.toString()
   }
 }
 
